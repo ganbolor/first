@@ -1,0 +1,34 @@
+
+{% load poll_extras %}
+
+
+
+{% if latest_poll_list %}
+    <ul>
+    {% for poll in latest_poll_list %}
+        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+
+{{ test2|cut:"0" }}
+<br>
+
+{{ test1|lower }}
+<br>
+
+{{ test2|upper }}
+<br>
+
+{{ test1|add_xx }}
+<br>
+
+{{ test2|initial_letter_filter }}
+<br>
+
+{{ test1|initial_letter_filter }}
+<br>

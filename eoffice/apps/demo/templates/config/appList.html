@@ -1,0 +1,92 @@
+{% extends "base_site.html" %}
+
+{% block extrahead %}
+	<link href="/media/css/changelists.css" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+	
+	<h1>Select {{module.name}} to change</h1>
+	<div id="content-main">
+		<ul class="object-tools">
+			<li>
+				<a class="addlink" href="{{module.url_add}}">Add {{module.name_add}}</a>
+			</li>
+		</ul>
+		<div id="changelist" class="module">
+			<div id="toolbar">
+				<form id="changelist-search" method="get" action="">
+					<div>
+						<label for="searchbar">
+							<img alt="Search" src="/media/img/icon_searchbox.png">
+						</label>
+						<input id="searchbar" type="text" value="" name="q" size="40">
+						<input type="submit" value="Search">
+					</div>
+				</form>
+			</div>
+			<form id="changelist-form" method="post" action="">
+				<div class="actions">
+					<label>
+						Action: 
+						<select name="action">
+							<option selected="selected" value="">---------</option>
+							<option value="delete_selected">Delete selected users</option>
+						</select>
+					</label>
+					<button class="button" value="0" name="index" title="Run the selected action" type="submit">Go</button>
+					<span class="action-counter" style="display: inline;">0 of 1 selected</span>
+				</div>
+				<div class="results">
+				
+					<table id="result_list">
+						<thead>
+							<tr>
+								<th>
+									<div class="text">
+										<a href="?o=1">№</a>
+									</div>
+									<div class="clear"></div>
+								</td>
+								<th>Нэр</th>
+								<th>Товч нэр</th>
+								<th>Тайлбар</th>
+								<th>Хаяг</th>
+								<th>Зураг</th>
+								<th>Дараалал</th>
+								<th>Зөвшөөрөх</th>
+			
+							</tr>
+						</thead>
+						<tbody>
+							{% for item in list %}
+								<tr class="{% cycle 'row1' 'row2' as row_class %}" >
+									<td> {{ item.id }} </td>
+									<td> {{ item.name }} </td>
+									<td> {{ item.short_name }} </td>
+									<td> {{ item.desc }} </td>
+									<td> {{ item.link }} </td>
+									<td> {{ item.image }} </td>
+									<td> {{ item.show_order }} </td>
+									<td> {{ item.is_lock }} </td>
+									<td>
+										<a href="{{ module.GetUrlView }}{{ item.id }}">{{ module.name_view }}</a> | 
+										<a href="{{ module.GetUrlEdit }}{{ item.id }}">{{ module.name_edit }}</a> | 
+										<a href="{{ module.GetUrlDel }}{{ item.id }}">{{ module.name_del }}</a> | 
+									</td>
+									
+								</tr>
+							{% empty %}
+								<tr>
+									<td colspan="15"> Уучлаарай ямарч жагсаалт олдсонгүй ( Sorry, no athlete in this list! )</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<p class="paginator"> 1 user </p>
+			</form>
+		</div>
+		<br class="clear">
+	</div>
+{% endblock %}

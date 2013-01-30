@@ -1,0 +1,87 @@
+{% extends "base_site.html" %}
+
+{% block content %}
+	
+	<div>
+		<a href="{{ module.GetUrlList }}">{{ module.name_list }}</a> |
+		<a href="{{ module.GetUrlEdit }}{{ item.id }}">{{ module.name_edit }}</a> |
+		<a href="{{ module.GetUrlDel }}{{ item.id }}">{{ module.name_del }}</a> |
+	</div>
+	
+	{{ page.error }}
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>№</th>
+					<th>Төрөл</th>
+					<th>Утга</th>
+				</tr>
+			<thead>			
+			<tbody>
+				<tr>
+					<td>0</td>
+					<td>id</td>
+					<td>{{ item.id }}</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Нэр</td>
+					<td>{{ item.name }}</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Товч нэр</td>
+					<td>{{ item.short_name }}</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Тайлбар</td>
+					<td>{{ item.desc }}</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Хаяг</td>
+					<td>{{ item.link }}</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Зураг</td>
+					<td>{{ item.image }}</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Дараалал</td>
+					<td>{{ item.show_order }}</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Зөвшөөрөх</td>
+					<td>{{ item.is_lock }}</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Оруулсан хэрэглэгч</td>
+					<td>{{ item.insert_user }}</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Оруулсан огноо</td>
+					<td>{{ item.insert_date }}</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>Зассан хэрэглэгч</td>
+					<td>{{ item.update_user }}</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Зассан огноо</td>
+					<td>{{ item.update_date }}</td>
+				</tr>
+			<tbody>
+		</table>
+		
+	</div>
+{% endblock %}
+

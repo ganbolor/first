@@ -1,0 +1,19 @@
+{% extends "base_site.html" %}
+
+
+{% block content %}
+	<h1>{{ page.now_module_name }}</h1>
+	<div id="content-main">
+		<div>
+			<div class="help">  
+				Энэ модуль нь програмын жагсаалт
+			
+			</div>
+			
+			<a href="{{ page.now_module_url }}list/">Жагсаалт</a><br />
+			<a href="{{ page.now_module_url }}add/">Нэмэх</a><br />
+			
+		</div>
+	</div>
+	<br class="clear">
+{% endblock %}

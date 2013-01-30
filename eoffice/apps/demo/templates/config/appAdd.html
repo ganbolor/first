@@ -1,0 +1,23 @@
+{% extends "base_site.html" %}
+
+{% block extrahead %}
+	<link href="/media/css/forms.css" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+	
+	<div>
+		<a href="{{ module.GetUrlList }}">{{ module.name_list }}</a>
+	</div>
+	
+	{{ page.error }}
+	<div>
+		<form action="" method="post">{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Submit" />
+		</form>
+
+		
+	</div>
+{% endblock %}
+

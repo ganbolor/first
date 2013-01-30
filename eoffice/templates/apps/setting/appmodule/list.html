@@ -1,0 +1,182 @@
+{% extends "base_site.html" %}
+{% load i18n admin_static %}
+
+
+{% block extrahead %}
+	<link href="/media/css/changelists.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/media/css/forms.css" />
+	<script src="/media/js/jquery.js" type="text/javascript">
+	
+	<style>
+      #changelist table thead th:first-child {width: inherit}
+    </style>
+    <script type="text/javascript">
+		(function($) {
+		    $(document).ready(function($) {
+		        $("tr input.action-select").actions();
+		    });
+		})(django.jQuery);
+	</script>
+{% endblock %}
+
+{% block content %}
+	<h1>{{ page.now_module_name }} - Жагсаалт</h1>
+	<div id="content-main">
+		<ul class="object-tools">
+			<li>
+				<a class="addlink" href="{{ page.now_module_url }}add/">Нэмэх</a>
+			</li>
+		</ul>
+		
+		{% if not page.form.formset.errors %}
+	        <p class="errornote">
+	        {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+	        </p>
+	        {{ cl.formset.non_form_errors }}
+	    {% endif %}
+    
+		<div id="changelist" class="module">
+			{% if not page.list_search %}
+				<div id="toolbar"><form id="changelist-search" action="" method="get">
+				<div><!-- DIV needed for valid HTML -->
+				<label for="searchbar"><img src="{% static "admin/img/icon_searchbox.png" %}" alt="Search" /></label>
+				<input type="text" size="40" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" />
+				<input type="submit" value="{% trans 'Search' %}" />
+				{% if show_result_count %}
+				    <span class="small quiet">{% blocktrans count counter=cl.result_count %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktrans %} (<a href="?{% if cl.is_popup %}pop=1{% endif %}">{% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}</a>)</span>
+				{% endif %}
+				{% for pair in cl.params.items %}
+				    {% ifnotequal pair.0 search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endifnotequal %}
+				{% endfor %}
+				</div>
+				</form></div>
+				<script type="text/javascript">document.getElementById("searchbar").focus();</script>
+
+			{% endif %}
+			
+			<form id="changelist-form" method="post" action="">
+				<div class="actions">
+				    {% for field in action_form %}{% if field.label %}<label>{{ field.label }} {% endif %}{{ field }}{% if field.label %}</label>{% endif %}{% endfor %}
+				    <button type="submit" class="button" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Go" %}</button>
+				    {% if actions_selection_counter %}
+				        <script type="text/javascript">var _actions_icnt="{{ cl.result_list|length|default:"0" }}";</script>
+				        <span class="action-counter">{{ selection_note }}</span>
+				        {% if cl.result_count != cl.result_list|length %}
+				        <span class="all">{{ selection_note_all }}</span>
+				        <span class="question">
+				            <a href="javascript:;" title="{% trans "Click here to select the objects across all pages" %}">{% blocktrans with cl.result_count as total_count %}Select all {{ total_count }} {{ module_name }}{% endblocktrans %}</a>
+				        </span>
+				        <span class="clear"><a href="javascript:;">{% trans "Clear selection" %}</a></span>
+				        {% endif %}
+				    {% endif %}
+				</div>
+				<div class="results">
+				
+					<table id="result_list">
+						<thead>
+							<tr>
+								<th class="action-checkbox-column" scope="col">
+									<div class="text">
+										<span>
+											<input id="action-toggle" type="checkbox" style="display: inline;">
+										</span>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=1">№</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=2">Нэр</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=3">Товч нэр</a>
+									</div>
+									<div class="clear"></div>
+									</th>
+								<th>
+									<div class="text">
+										<a href="?o=3">Тайлбар</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=3">App нэр</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=3">Хаяг</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=3">Зураг</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=3">Дараалал</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										<a href="?o=3">Зөвшөөрөх</a>
+									</div>
+									<div class="clear"></div>
+								</th>
+								<th>
+									<div class="text">
+										Удирдах
+									</div>
+									<div class="clear"></div>
+								</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							{% for item in list %}
+								<tr class="{% cycle 'row1' 'row2' as row_class %}" >
+									<td class="action-checkbox" ><input class="action-select" type="checkbox" name="_selected_action" value="1"></td>
+									<td> {{ item.id }} </td>
+									<td> {{ item.name }} </td>
+									<td> {{ item.short_name }} </td>
+									<td> {{ item.desc }} </td>
+									<td> {{ item.app }} </td>
+									<td> {{ item.link }} </td>
+									<td> {{ item.image }} </td>
+									<td> {{ item.show_order }} </td>
+									<td> {{ item.is_lock }} </td>
+									<td>
+										<a class="viewlink" href="{{ page.now_module_url }}view/{{ item.id }}/">Харах</a> |
+										<a class="changelink" href="{{ page.now_module_url }}edit/{{ item.id }}/">Засах</a> |
+										<a class="deletelink" href="{{ page.now_module_url }}del/{{ item.id }}/">Устгах</a>
+									</td>
+									
+								</tr>
+							{% empty %}
+								<tr>
+									<td colspan="15"> Уучлаарай ямарч жагсаалт олдсонгүй ( Sorry, no athlete in this list! )</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<p class="paginator"> {{ list.count }} {{ module.name }} </p>
+			</form>
+		</div>
+		<br class="clear">
+	</div>
+{% endblock %}

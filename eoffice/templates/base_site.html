@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+
+
+{% block test %}
+{% if page.test_mode %}
+	{{ page.now_app }} | 
+	{{ page.now_module }} |
+	{{ page.now_action }} |
+	<br>
+	{{ page.now_app_url }} | 
+	{{ page.now_module_url }} |
+	{{ page.now_action_url }} |
+{% endif %}
+
+{% endblock %}
+{% block nav-global %}{% endblock %}

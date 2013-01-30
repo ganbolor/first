@@ -1,0 +1,46 @@
+{% extends "base_site.html" %}
+{% load i18n  %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="/media/css/dashboard.css" />{% endblock %}
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+
+{% block content %}
+	
+	<div id="content-main">
+	
+		<div class="module">
+			<table>
+				<caption>
+					<a class="section" href="{{ page.getNowAppUrl }}">{{ page.getNowAppName }}
+					</a>
+				</caption>
+				<tbody>
+						{% for item in page.getNowAppModules %}
+						<tr>
+							<th scope="row">
+								<a href="{{  item.getUrl }}">{{  item.name }}</a>
+							</th>
+							<th>
+								<a class="addlink" href="{{ item.getUrl }}add/">{{ item.getAddActiontName }}</a>
+							</th>
+							<th>
+								<a class="changelink" href="{{ item.getUrl }}list/">{{ item.getListActiontName }}</a>
+							</th>
+						</tr>
+						{% empty  %}
+							<tr>
+								<th>Хоосон байна</th>
+							</tr>
+						{% endfor %}
+					
+				</tbody>
+			</table>
+		</div>
+	
+		
+	
+	<br class="clear">
+	</div>
+{% endblock %}

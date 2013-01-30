@@ -1,0 +1,94 @@
+{% extends "base_site.html" %}
+
+{% block extrahead %}
+	<link href="/media/css/forms.css" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+	<h1>{{module.name}}-ийг харах</h1>
+	<div id="content-main">
+		<ul class="object-tools">
+			<li>
+				<a class="listlink" href="{{module.GetUrlList}}">{{module.name_list}}</a>
+			</li>
+		</ul>
+		
+
+		
+	</div>
+	{{ page.error }}
+	<div>
+		<fieldset class="module aligned ">
+			<table id="result_list">
+				<thead>
+					<tr>
+						<th>Талбар</th>
+						<th>Утга</th>
+					</tr>
+				<thead>			
+				<tbody>
+					<tr>
+						<td>
+							id:
+						</td>
+						<td>{{ item.id }}</td>
+					</tr>
+					<tr>
+						<td>Нэр</td>
+						<td>{{ item.name }}</td>
+					</tr>
+					<tr>
+						<td>Товч нэр</td>
+						<td>{{ item.short_name }}</td>
+					</tr>
+					<tr>
+						<td>Тайлбар</td>
+						<td>{{ item.desc }}</td>
+					</tr>
+					<tr>
+						<td>Хаяг</td>
+						<td>{{ item.link }}</td>
+					</tr>
+					<tr>
+						<td>Зураг</td>
+						<td>{{ item.image }}</td>
+					</tr>
+					<tr>
+						<td>Дараалал</td>
+						<td>{{ item.show_order }}</td>
+					</tr>
+					<tr>
+						<td>Зөвшөөрөх</td>
+						<td>{{ item.is_lock }}</td>
+					</tr>
+					<tr>
+						<td>Оруулсан хэрэглэгч</td>
+						<td>{{ item.insert_user }}</td>
+					</tr>
+					<tr>
+						<td>Оруулсан огноо</td>
+						<td>{{ item.insert_date }}</td>
+					</tr>
+					<tr>
+						<td>Зассан хэрэглэгч</td>
+						<td>{{ item.update_user }}</td>
+					</tr>
+					<tr>
+						<td>Зассан огноо</td>
+						<td>{{ item.update_date }}</td>
+					</tr>
+				<tbody>
+			</table>
+		</fieldset>
+		<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+			<div class="submit-row">
+				<p class="deletelink-box">
+					<a class="deletelink" href="{{module.GetUrlDel}}{{item.id}}">Устгах</a>
+				</p>
+			    <input class="default" type="submit" name="_edit" value="Засах">
+				<input type="submit" name="_delete" value="Хадгалах">
+		    </div>
+	    </form>
+	</div>
+{% endblock %}
+

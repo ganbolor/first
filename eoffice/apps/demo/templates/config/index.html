@@ -1,0 +1,26 @@
+{% extends "base_site.html" %}
+
+{% block content %}
+	<div>
+		<h2>Тохигоо - {{ configs.count }}</h2>
+		{% if configs.count > 0 %}
+			<a href="config">list</a>
+		{% endif %}
+		<a href="config/add">add</a>
+	</div>
+	<div>
+		<h2>Модул - {{ app_modules.count }}</h2>
+		{% if app_modules.count > 0 %}
+			<a href="app">list</a>
+		{% endif %}
+		
+		<a href="app/add">add</a>
+	</div>
+	aaa
+	{{ count(page.getApps()) }}
+	
+	{% for item in page.getApps() %}
+		{{ item }}
+	{% endif %}
+	dfg
+{% endblock %}

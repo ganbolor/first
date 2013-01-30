@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/breakage/!svn/ver/1/mptt/templatetags
+END
+mptt_admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/breakage/!svn/ver/11/mptt/templatetags/mptt_admin.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/breakage/!svn/ver/1/mptt/templatetags/__init__.py
+END
+mptt_tags.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/breakage/!svn/ver/10/mptt/templatetags/mptt_tags.py
+END

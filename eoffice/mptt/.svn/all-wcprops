@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/breakage/!svn/ver/1/mptt
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/breakage/!svn/ver/11/mptt/admin.py
+END
+managers.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/breakage/!svn/ver/10/mptt/managers.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/breakage/!svn/ver/10/mptt/__init__.py
+END
+signals.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/breakage/!svn/ver/1/mptt/signals.py
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/breakage/!svn/ver/10/mptt/utils.py
+END
+exceptions.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/breakage/!svn/ver/1/mptt/exceptions.py
+END
+forms.py.save
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/breakage/!svn/ver/1/mptt/forms.py.save
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/breakage/!svn/ver/10/mptt/models.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/breakage/!svn/ver/10/mptt/forms.py
+END

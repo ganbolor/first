@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/breakage/!svn/ver/1/mptt/tests
+END
+doctests.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/breakage/!svn/ver/1/mptt/tests/doctests.py
+END
+test_runner.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/breakage/!svn/ver/12/mptt/tests/test_runner.py
+END
+testcases.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/breakage/!svn/ver/1/mptt/tests/testcases.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/breakage/!svn/ver/1/mptt/tests/__init__.py
+END
+doctests.txt
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/breakage/!svn/ver/12/mptt/tests/doctests.txt
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/breakage/!svn/ver/1/mptt/tests/settings.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/breakage/!svn/ver/1/mptt/tests/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/breakage/!svn/ver/1/mptt/tests/models.py
+END

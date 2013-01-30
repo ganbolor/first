@@ -1,0 +1,74 @@
+{% extends "base_site.html" %}
+
+{% block extrahead %}
+	<link href="/media/css/forms.css" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+	<h1>{{ page.now_module_name }} - Нэмэх</h1>
+	<div id="content-main">
+		<ul class="object-tools">
+			<li>
+				<a class="listlink" href="{{ page.now_module_url }}list/">Жагсаалт</a>
+			</li>
+		</ul>
+		
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>№</th>
+						<th>Нэр</th>
+						<th>app_label</th>
+						<th>model</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in list_content_type %}
+						<tr>
+							<td>{{ item.pk }}</td>
+							<td>{{ item.name }}</td>
+							<td>{{ item.app_label }}</td>
+							<td>{{ item.model }}</td>
+						</tr>
+					{% endfor %}
+					
+					
+				</tbody>
+			</table>
+		</div>
+		
+		<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+			
+			<div >
+				{% if page.error %}
+					<p class="errornote">{{page.error}} ({{ form.non_field_errors }})</p>
+				{% endif %}
+			</div>
+			
+			{% for field in form %}
+				<fieldset class="module aligned ">
+				    <div class="form-row {% if field.errors %}errors{% endif %} ">
+						{{ field.errors }}
+						<div>
+				        	<label for="{{ field.auto_id }}" {% if field.field.required %}class="required"{% endif %} >
+								{{ field.label }}:
+					        </label>
+					
+					        {{ field }}
+							{% if field.help_text %}<p class="help">{{ field.help_text }}</p>{% endif %}
+						</div>
+				    </div>
+				</fieldset>
+			{% endfor %}
+			<div class="submit-row">
+			    <input class="default" type="submit" name="_save" value="Хадгалах">
+				<input type="submit" name="_addanother" value="Хадгалаад өөрийг нэмэх">
+				<input type="submit" name="_continue" value="Хадгалаад нэмж засах">
+		    </div>
+		</form>
+
+		
+	</div>
+{% endblock %}
+
